@@ -1,0 +1,102 @@
+body{
+    background-color: gray;
+    background-image: url(./img/backLogin.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+
+#Principal{
+    border-radius: 15px;
+    display: flex;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12%;   
+    border: solid black 0.5px;
+}
+
+
+
+#pass,#cp{position: relative;padding: 0;}
+   
+input{
+    padding:7px;
+    padding-left: 12px;
+    margin: 10px;
+    height: 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    border-style: none;
+    width: 70%;
+}
+
+#img{
+    background-image: url(./img/logoSeng.png);
+    background-position: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 120px;
+    width: 95%;
+}
+
+#cadBtn,#loginBtn{
+    padding: 5px;
+    border-radius:15px;
+    border-style: none;
+}
+
+
+#loginBtn{
+    margin-top: 5px;
+    margin-left: 22px;
+    font-size: 20px;
+    height: 35px;
+    width: 150px;
+    background-color: rgb(110, 100, 245);
+}
+
+#loginBtn:hover{background-color: rgb(78, 66, 245);}
+
+#cadBtn{
+    margin-top: 12px;
+    font-size: 20px;
+    height: 35px;
+    width: 150px;
+    background-color: rgb(155, 155, 155);
+}
+
+#cadBtn:hover{background-color: rgb(112, 111, 111)}
+
+#formCad,#formLogin{
+    padding: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+#login{ width: 60%; background-color: rgb(207, 180, 233,0.9); border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px; padding: 5px;}
+
+#cadastro{width: 40%; background-color: rgb(245, 242, 242,0.9); border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;}
+
+#login h1,#cadastro{
+    text-align: center;
+}
+
+#load {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/carregamento.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: none;
+}

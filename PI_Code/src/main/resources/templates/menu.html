@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="menu.css">
+  <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
+
+  <title>Menu</title>
+</head>
+
+<body>
+
+
+  <div id="mn">
+
+    <h1>Menu</h1>
+
+    <p class="opcao">Perfil</p>
+    <p class="opcao">Saldo</p>
+    <p class="opcao">Deposito</p>
+    <p class="opcao">Saque</p>
+    <p class="opcao">Transferências</p>
+    <p class="opcao">Pagamentos</p>
+    <p class="opcao">Empréstimo</p>
+    <p class="opcao">Extrato</p>
+    <p class="opcao">Suporte</p>
+
+    <button id="sair">Sair</button>
+  </div>
+
+  <div id="load"></div>
+  <script>
+
+    let opcoes = document.getElementsByClassName("opcao")
+
+    opcoes[0].addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/perfil"
+      }, 1000)
+
+    })
+
+
+    opcoes[1].addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/saldo"
+      }, 1000)
+    })
+
+
+    opcoes[2].addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/deposito"
+      }, 1000)
+    })
+
+
+    opcoes[3].addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/saque"
+      }, 1000)
+    })
+
+
+    opcoes[4].addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/transferencia"
+      }, 1000)
+    })
+
+    opcoes[5].addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/pagamentos/boleto"
+      }, 1000)
+    })
+
+    opcoes[6].addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/emprestimo"
+      }, 1000)
+    })
+
+    opcoes[7].addEventListener("click", function () {
+      let load = document.getElementById("load")
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+        fetch(`http://localhost:8080/extrato/listar`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.length < 1) {
+              alert("Não há operações realizadas")
+            } else {
+              window.location.href = "http://localhost:8080/extrato"
+            }
+          })
+      }, 1000)
+    })
+
+    opcoes[8].addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/suporte"
+      }, 1000)
+    })
+
+    document.getElementById("sair").addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080"
+      }, 2500)
+    })
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saldo</title>
+    <style>
+        body {
+            background-color: white;
+            background-image: url(../img/backSaldo.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+
+        ul {
+            list-style: none;
+        }
+
+        ul p {
+            margin: 10px;
+            margin-left: -25px;
+            background-color: rgb(252, 234, 136);
+            padding: 3px;
+            font-size: 30px;
+            border-radius: 10px;
+        }
+
+        ul p:hover {
+            background-color: rgb(252, 240, 176);
+        }
+
+        #sald {
+            border-radius: 10px;
+            text-align: center;
+            width: 30%;
+            padding: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1%;
+            border: solid black 1px;
+            background-color: rgb(210, 162, 255, 0.7);
+        }
+
+        #voltar {
+            margin-top: 5px;
+            border-style: none;
+            border-radius: 10px;
+            padding: 7px;
+            font-size: 22px;
+            background-color: rgb(98, 98, 253);
+        }
+
+        #voltar:hover {
+            background-color: rgb(61, 61, 253);
+        }
+
+        #load {
+            z-index: 2;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(../img/carregamento.gif);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: rgba(255, 255, 255, 0.7);
+            display: none;
+        }
+    </style>
+    <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <div id="sald">
+        <h1>Saldo</h1>
+        <ul id="exibiSaldo"></ul>
+        <button id="voltar">Voltar</button>
+    </div>
+    <div id="load"></div>
+    <script>
+        fetch("http://localhost:8080/saldo/listar?codigo=1")
+            .then(response => response.json())
+            .then(data => {
+                let dadosUsuario = document.getElementById("exibiSaldo");
+                data.forEach(usuario => {
+                    const saldo = usuario.saldo.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                    });
+                    const contaSaldo = usuario.codigo
+       let listItem = document.createElement("li");
+                    listItem.innerHTML = `
+                <p>Conta ${contaSaldo}</br>${saldo}</p>`;
+                    dadosUsuario.appendChild(listItem);
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao buscar saldo usuario:', error);
+            });    
+            document.getElementById("voltar").addEventListener("click", function () {
+            let load = document.getElementById("load")
+            load.style.display = "block"
+            setTimeout(function () {
+                load.style.display = "none"
+
+                window.location.href = "http://localhost:8080/menu"
+            }, 1000)
+        })
+ </script>
+</body>
+</html>

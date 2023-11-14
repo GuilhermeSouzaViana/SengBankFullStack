@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      background-color: white;
+      background-image: url(../img/backPerfil.jpg);
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    #pmn {
+      border-radius: 10px;
+      text-align: center;
+      width: 30%;
+      padding: 5px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 15%;
+      border: solid black 1px;
+      background-color: rgb(210, 162, 255, 0.7);
+    }
+
+
+    p {
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%;
+      border-radius: 15px;
+      font-size: 25px;
+      padding: 3px;
+      background-color: rgb(243, 227, 134);
+    }
+
+    p:hover {
+      background-color: rgb(240, 217, 85);
+    }
+
+    #voltar {
+      border-style: none;
+      border-radius: 10px;
+      padding: 7px;
+      font-size: 22px;
+      background-color: rgb(98, 98, 253);
+    }
+
+    #voltar:hover {
+      background-color: rgb(61, 61, 253);
+    }
+
+    #load {
+      z-index: 2;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url(../img/carregamento.gif);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-color: rgba(255, 255, 255, 0.7);
+      display: none;
+    }
+  </style>
+  <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
+  <title>Perfil</title>
+</head>
+
+<body>
+
+
+  <div id="pmn">
+    <p id="visualizar">Visualizar dados</p>
+    <p id="alterar">Alterar dados</p>
+
+    <button id="voltar">Voltar</button>
+  </div>
+
+  <div id="load"></div>
+
+  <script>
+
+    document.getElementById("visualizar").addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/perfil/exibir"
+      }, 1000)
+    })
+
+    document.getElementById("alterar").addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/perfil/alterar"
+
+      }, 1000)
+    })
+
+    document.getElementById("voltar").addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/menu"
+
+      }, 1000)
+    })
+
+
+  </script>
+
+
+
+</body>
+
+</html>

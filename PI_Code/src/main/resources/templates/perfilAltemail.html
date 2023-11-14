@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-color: white;
+            background-image: url(../img/backPerfil.jpg);
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+
+        #altE {
+            border-radius: 10px;
+            text-align: center;
+            width: 30%;
+            padding: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 15%;
+            border: solid black 1px;
+            background-color: rgb(210, 162, 255, 0.7);
+        }
+
+
+        input {
+            padding: 5px;
+            margin: 5px;
+            font-size: 20px;
+        }
+
+
+        #voltar,
+        #alt {
+            margin-top: 5px;
+            border-style: none;
+            border-radius: 10px;
+            padding: 7px;
+            font-size: 22px;
+            background-color: rgb(98, 98, 253);
+        }
+
+        #voltar:hover {
+            background-color: rgb(61, 61, 253);
+        }
+
+        #alt:hover {
+            background-color: rgb(61, 61, 253);
+        }
+
+        #load {
+            z-index: 2;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(../img/carregamento.gif);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: rgba(255, 255, 255, 0.7);
+            display: none;
+        }
+
+        #confirmSenha {
+            padding: 10px;
+            z-index: 3;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(10, 10, 10, 0.9);
+            text-align: center;
+            display: none;
+            transition: 1s;
+
+        }
+
+        #confirmSenha:hover {
+            width: 100%;
+            height: 100%;
+        }
+
+        #confirmSenha input {
+            height: 80px;
+            width: 280px;
+            font-size: 26px;
+            padding: 2px;
+            padding-left: 10px;
+            margin: auto;
+            margin-top: 15%;
+        }
+
+        #cs {
+            margin-top: 15px;
+            font-size: 35px;
+            background-color: rgb(182, 182, 182);
+            padding: 5px;
+        }
+
+        #cs:hover {
+            background-color: rgb(133, 130, 130);
+        }
+    </style>
+
+    <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
+
+    <title>Perfil</title>
+</head>
+
+<body>
+
+    <div id="altE">
+
+        <form id="altEmail">
+
+            <input type="text" name="" id="contaR" required oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                placeholder="Conta para alteração"> <br>
+            <input type="email" name="" id="email" required placeholder="Novo email"> <br>
+
+            <button type="submit" id="alt">Alterar</button> <br>
+        </form>
+
+        <button id="voltar">Voltar</button>
+    </div>
+
+
+    <div id="load"></div>
+
+    <div id="confirmSenha">
+        <form id="conferS">
+            <input type="password" name="" id="cPass" placeholder="Confirmar senha"> <br>
+            <button id="cs">Confirmar</button>
+        </form>
+    </div>
+    <script>
+
+        function AlterarEmail() {
+            event.preventDefault()
+
+            confirmSenha.style.display = "none"
+
+            let contaR = document.getElementById("contaR").value
+
+            let email = document.getElementById("email").value
+
+            let load = document.getElementById("load")
+
+            let confSenha = document.getElementById("cPass").value
+
+            load.style.display = "block"
+
+            setTimeout(function () {
+                let validaS = { senha: confSenha }
+
+                fetch(`http://localhost:8080/confereSenha?id=${contaR}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(validaS)
+                })
+                    .then(response => {
+                        if (response.status == 200) {
+                            document.getElementById("conferS").reset();
+                            console.log("Senha correta")
+
+                            const altEmail = { email: email }
+
+                            fetch(`http://localhost:8080/usuario/email/${contaR}`, {
+                                method: "PUT",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify(altEmail)
+                            })
+                                .then(Response => {
+                                    if (Response.status === 200) {
+                                        load.style.display = "none"
+
+                                        setTimeout(function () {
+                                            alert("Email alterado com sucesso !")
+                                            document.getElementById("altEmail").reset()
+                                            window.location.href = "http://localhost:8080/menu"
+                                        }, 100)
+                                    } else {
+                                        let load = document.getElementById("load")
+                                        load.style.display = "none"
+                                        setTimeout(function () {
+                                            alert("Conta inexistente")
+                                        }, 100)
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("Erro:", error)
+                                })
+                        } else {
+                            document.getElementById("conferS").reset();
+                            load.style.display = "none"
+                            document.getElementById("altEmail").reset();
+                            setTimeout(function () {
+                                alert("Senha incorreta")
+                            }, 100)
+                        }
+                    })
+            }, 1500)
+        }
+
+        document.getElementById("altEmail").addEventListener("submit", function () {
+            event.preventDefault()
+            confirmSenha.style.display = "block"
+        })
+
+        document.getElementById("conferS").addEventListener("submit", AlterarEmail)
+
+        document.getElementById("voltar").addEventListener("click", function () {
+            let load = document.getElementById("load")
+
+            load.style.display = "block"
+
+            setTimeout(function () {
+                load.style.display = "none"
+
+                window.location.href = "http://localhost:8080/perfil"
+            }, 1000)
+        })
+
+
+    </script>
+</body>
+
+</html>

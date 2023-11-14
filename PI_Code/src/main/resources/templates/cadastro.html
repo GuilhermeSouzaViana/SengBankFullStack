@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="cadastro.css">
+  <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
+  <title>Cadastro</title>
+</head>
+
+<body>
+
+  <form id="CadUsuario">
+    <h1>Cadastro</h1>
+    <input type="text" name="" id="nome" placeholder="Nome Completo"
+      oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ ]/g, '');" required> <br>
+    <input type="text" name="" id="cpf" oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+      placeholder="CPF: 000.000.000.00" required pattern="[0-9]{11}"> <br>
+    <input type="date" name="" id="idade" max="2005-12-31" required>
+    <br>
+    <input type="text" name="" id="endereco" placeholder="Endereço" required><br>
+    <input type="password" name="" id="senha" placeholder="Senha" required minlength="7"><br>
+    <input type="email" name="" id="email" placeholder="Email" required><br>
+    <input type="text" name="" id="telefone" placeholder="Tel: (XX)XXXX-XXXX"
+      oninput="this.value = this.value.replace(/[^0-9]/g, '');" pattern="[0-9]{11}"><br>
+    <input type="text" name="" id="salarioBase" oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+      placeholder="Salario base" required><br>
+
+    <button type="submit" id="cadBtn">Cadastrar</button>
+  </form>
+
+
+
+
+  <div id="load"></div>
+  <script>
+
+    function cadSaldo() {
+      let load = document.getElementById("load")
+      load.style.display = "block"
+      let cpf = document.getElementById("cpf").value
+      let obj = { cpf: cpf };
+
+      fetch(`http://localhost:8080/confereCpf?cpf=${cpf}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(obj)
+      }).then(response => {
+        if (response.status == 200) {
+          console.log("Cpf já cadastrado")
+        } else {
+          let saldo = { saldo: 0 }
+          fetch("http://localhost:8080/saldo/cadastrar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(saldo)
+          })
+        }
+      })
+    }
+
+
+    function cadastroUsuario() {
+      event.preventDefault()
+
+      let nome = document.getElementById("nome").value
+      let cpf = document.getElementById("cpf").value
+      let idade = new Date(document.getElementById("idade").value)
+      let endereco = document.getElementById("endereco").value
+      let senha = document.getElementById("senha").value
+      let email = document.getElementById("email").value
+      let telefone = document.getElementById("telefone").value
+      let salarioBase = parseFloat(document.getElementById("salarioBase").value)
+
+      let formataIdade = idade.toLocaleDateString('pt-BR')
+
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+      setTimeout(function () {
+
+        let obj = { cpf: cpf };
+
+
+        fetch(`http://localhost:8080/confereCpf?cpf=${cpf}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(obj)
+        })
+          .then(response => {
+            if (response.status == 200) {
+              load.style.display = "none"
+
+              setTimeout(function () {
+
+                alert("Cpf já cadastrado")
+              }, 100)
+            } else {
+
+              fetch("http://localhost:8080/saldo/listar")
+                .then(response => response.json())
+                .then(data => {
+
+                  const usuario = {
+                    agencia: "001",
+                    nome: nome,
+                    cpf: cpf,
+                    nascimento: formataIdade,
+                    endereco: endereco,
+                    senha: senha,
+                    email: email,
+                    telefone: telefone,
+                    salarioBase: salarioBase,
+                    "saldo": {
+                      "codigo": data.length,
+                      "saldo": data.saldo
+                    }
+                  }
+
+
+                  fetch("http://localhost:8080/usuario/cadastrar", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(usuario)
+                  })
+                    .then(Response => {
+                      if (Response.status === 200) {
+                        load.style.display = "none"
+
+                        setTimeout(function () {
+                          alert("Usuario cadastrado ")
+
+                          document.getElementById("CadUsuario").reset()
+                          window.location.href = "http://localhost:8080/menu"
+                        }, 100)
+                      } else {
+                        load.style.display = "none"
+
+                        setTimeout(function () {
+                          alert("Não foi possivel concluir o cadastro")
+                        }, 100)
+                      }
+                    })
+                    .catch(error => {
+                      console.error("Erro:", error)
+                    })
+                })
+            }
+          })
+      }, 1500)
+    }
+
+    document.getElementById("CadUsuario").addEventListener("submit", function (event) {
+      cadSaldo();
+      cadastroUsuario();
+    });
+
+  </script>
+
+</body>
+
+</html>

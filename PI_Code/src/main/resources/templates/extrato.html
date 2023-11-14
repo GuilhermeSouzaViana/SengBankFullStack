@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extrato</title>
+    <style>
+        body {
+            background-color: white;
+            background-image: url(../img/backExtrato.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        #extrat {
+            border-radius: 10px;
+            text-align: center;
+            width: 45%;
+            padding: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1%;
+            border: solid black 1px;
+            background-color: rgb(210, 162, 255, 0.7);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        section p {
+            margin: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: rgb(252, 234, 136);
+            padding: 3px;
+            font-size: 22px;
+            border-radius: 10px;
+        }
+
+        section {
+            border-radius: 10px;
+            text-align: center;
+            padding: 2px;
+            margin-left: -40px;
+            margin-top: 15px;
+        }
+
+        #voltar {
+            margin-top: 5px;
+            border-style: none;
+            border-radius: 10px;
+            padding: 7px;
+            font-size: 22px;
+            background-color: rgb(98, 98, 253);
+        }
+
+        #voltar:hover {
+            background-color: rgb(61, 61, 253);
+        }
+
+        #load {
+            z-index: 2;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(../img/carregamento.gif);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: rgba(255, 255, 255, 0.7);
+            display: none;
+        }
+    </style>
+    <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
+
+</head>
+
+<body>
+    <div id="extrat">
+
+        <ul id="extratos"></ul>
+
+        <button id="voltar">Voltar</button>
+    </div>
+
+    <div id="load"></div>
+
+    <script>
+        fetch("http://localhost:8080/extrato/listar")
+            .then(response => response.json())
+            .then(data => {
+
+                let operacoes = document.getElementById("extratos");
+                data = data.reverse();
+
+                data.forEach(extrat => {
+                    const valor = extrat.extrato.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                    });
+
+                    let listExtrato = document.createElement("li")
+                    listExtrato.innerHTML = `<section>
+                <p>Operação: ${extrat.tipoOperacao}</p>
+                <p>Conta: ${extrat.numeroConta}</p>
+                <p>Beneficiário: ${extrat.conta}</p>
+                <p>Valor: ${valor}</p>
+                </section>`;
+                    operacoes.appendChild(listExtrato);
+                })
+            })
+
+        document.getElementById("voltar").addEventListener("click", function () {
+            let load = document.getElementById("load")
+            load.style.display = "block"
+
+            setTimeout(function () {
+                load.style.display = "none"
+
+                window.location.href = "http://localhost:8080/menu"
+            }, 1000)
+        })
+
+
+    </script>
+</body>
+</html>

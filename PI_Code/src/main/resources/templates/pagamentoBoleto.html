@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: white;
+            background-image: url(../img/backBoleto.png);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        #pagBolet {
+            width: 40%;
+            text-align: center;
+            padding: 5px;
+            background-color: rgb(177, 120, 231, 0.7);
+            border-radius: 15px;
+            margin: auto;
+            margin-top: 10%;
+        }
+
+
+        input {
+            padding: 7px;
+            padding-left: 12px;
+            margin: 10px;
+            height: 20px;
+            font-size: 16px;
+            border-radius: 10px;
+            border-style: none;
+            width: 70%;
+        }
+
+        #voltar,
+        #pagBoleto {
+            margin-top: 5px;
+            border-style: none;
+            border-radius: 10px;
+            padding: 7px;
+            font-size: 22px;
+            background-color: rgb(98, 98, 253);
+        }
+
+        #voltar:hover {
+            background-color: rgb(61, 61, 253);
+        }
+
+        #pagBoleto:hover {
+            background-color: rgb(61, 61, 253);
+        }
+
+        #load {
+            z-index: 2;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(../img/carregamento.gif);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: rgba(255, 255, 255, 0.7);
+            display: none;
+        }
+
+        #confirmSenha {
+            padding: 10px;
+            z-index: 3;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(10, 10, 10, 0.9);
+            text-align: center;
+            display: none;
+
+        }
+
+        #confirmSenha:hover {
+            width: 100%;
+            height: 100%;
+        }
+
+        #confirmSenha input {
+            height: 80px;
+            width: 280px;
+            font-size: 26px;
+            padding: 2px;
+            padding-left: 10px;
+            margin: auto;
+            margin-top: 15%;
+        }
+
+        #cs {
+            margin-top: 15px;
+            font-size: 35px;
+            background-color: rgb(182, 182, 182);
+            padding: 5px;
+        }
+
+        #cs:hover {
+            background-color: rgb(133, 130, 130);
+        }
+    </style>
+
+<link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
+
+    <title>Pagamento</title>
+</head>
+
+<body>
+
+    <div id="pagBolet">
+        <h1>Pagamento via boleto</h1>
+        <form id="boleto">
+
+            <input type="text" name="" id="contaR" required oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                placeholder="Conta a realizar pagamento"> <br>
+            <input type="text" name="" id="barras" placeholder="codigo de barras" required> <br>
+            <input type="text" name="" id="valor" placeholder="valor" required> <br>
+            <button type="submit" id="pagBoleto">Confirmar</button>
+        </form>
+        <button id="voltar">Voltar</button>
+    </div>
+
+    <div id="load"></div>
+
+    <div id="confirmSenha">
+        <form id="conferS">
+            <input type="password" name="" id="cPass" placeholder="Confirmar senha"> <br>
+            <button id="cs">Confirmar</button>
+        </form>
+    </div>
+    <script>
+
+        function pagamentoViaBoleto() {
+            event.preventDefault()
+
+            confirmSenha.style.display = "none"
+
+            let contaR = document.getElementById("contaR").value
+            let barras = document.getElementById("barras").value
+            let valor = parseFloat(document.getElementById("valor").value)
+            let saldoDisponivel;
+
+            let confSenha = document.getElementById("cPass").value
+
+            let load = document.getElementById("load")
+
+            load.style.display = "block"
+
+            setTimeout(function () {
+
+                let validaS = { senha: confSenha }
+
+                fetch(`http://localhost:8080/confereSenha?id=${contaR}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(validaS)
+                })
+                    .then(response => {
+                        if (response.status == 200) {
+                            document.getElementById("conferS").reset();
+                            console.log("Senha correta")
+
+
+                            fetch(`http://localhost:8080/saldo/listar`)
+                                .then(response => response.json())
+                                .then(data => {
+
+                                    if (data.length < contaR - 1 || contaR == 0) {
+                                        load.style.display = "none"
+
+                                        setTimeout(function () {
+                                            alert("Conta inexistente")
+                                        }, 100)
+                                    } else {
+
+
+                                        saldoDisponivel = data[contaR - 1].saldo;
+
+                                        if (valor === 0) {
+                                            alert("Informe um valor valido")
+                                        } else if (barras.length !== 48) {
+                                            load.style.display = "none"
+
+                                            setTimeout(function () {
+
+                                                alert("Codigo de barras invalido")
+                                                document.getElementById("boleto").reset();
+                                            }, 100)
+                                        } else if (valor > saldoDisponivel) {
+                                            alert(saldoDisponivel)
+                                            alert("Saldo insuficiente")
+                                            document.getElementById("boleto").reset();
+                                        } else {
+
+                                            const valorBolero = {
+                                                tipoOperacao: "Pagamento via boleto",
+                                                codigoDeBarras: "Boleto",
+                                                conta: barras,
+                                                pagamento: valor
+                                            }
+
+                                        fetch(`http://localhost:8080/pagamentoBoleto/cadastrar?codigoSaldo=${contaR}`, {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type": "application/json"
+                                                },
+                                                body: JSON.stringify(valorBolero)
+                                            })
+                                                .then(response => {
+                                                    if (response.status === 200) {
+                                                        load.style.display = "none"
+
+                                                        setTimeout(function () {
+
+                                                            document.getElementById("boleto").reset();
+
+                                                            const extrato = {
+                                                                tipoOperacao: "Pagamento via boleto",
+                                                                numeroConta: "Boleto",
+                                                                conta: barras,
+                                                                extrato: valor
+                                                            }
+
+
+                                                            fetch("http://localhost:8080/extrato/cadastrar", {
+                                                                method: "POST",
+                                                                headers: { "Content-Type": "application/json" },
+                                                                body: JSON.stringify(extrato)
+                                                            })
+
+                                                            window.location.href = "http://localhost:8080/comprovantePagamento";
+                                                        }, 100)
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error("Erro:", error);
+                                                });
+                                        }
+                                    }
+                                })
+                        } else {
+                            document.getElementById("conferS").reset();
+                            load.style.display = "none"
+                            document.getElementById("boleto").reset();
+                            setTimeout(function () {
+                                alert("Senha incorreta")
+                            }, 100)
+                        }
+                    })
+
+            }, 1500)
+        }
+
+
+        document.getElementById("boleto").addEventListener("submit", function () {
+            event.preventDefault()
+            confirmSenha.style.display = "block"
+        })
+        document.getElementById("conferS").addEventListener("submit", pagamentoViaBoleto)
+
+
+        document.getElementById("voltar").addEventListener("click", function () {
+            let load = document.getElementById("load")
+
+            load.style.display = "block"
+
+            setTimeout(function () {
+                load.style.display = "none"
+
+                window.location.href = "http://localhost:8080/menu"
+            }, 1000)
+        })
+    </script>
+
+</body>
+</html>
