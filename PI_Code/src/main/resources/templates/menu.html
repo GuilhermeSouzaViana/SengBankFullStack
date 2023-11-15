@@ -12,22 +12,35 @@
 
 <body>
 
+  <header>
+    <div id="headerLogo"><img src="../img/logoSeng.png" alt="Logo SengBank"></div>
+    <div id="headerSuporte"><img src="../img/iconSuporte.jpg" alt="Suporte SengBank"></div>
+  </header>
 
   <div id="mn">
 
+    <div id="opPerfil">
     <h1>Menu</h1>
-
-    <p class="opcao">Perfil</p>
-    <p class="opcao">Saldo</p>
-    <p class="opcao">Deposito</p>
-    <p class="opcao">Saque</p>
-    <p class="opcao">Transferências</p>
-    <p class="opcao">Pagamentos</p>
-    <p class="opcao">Empréstimo</p>
-    <p class="opcao">Extrato</p>
-    <p class="opcao">Suporte</p>
-
+    <p class="opcao">Visualizar dados</p>
+    <p class="opcao">Alterar senha</p>
+    <p class="opcao">Alterar endereço</p>
+    <p class="opcao">Alterar email</p>
+    <p class="opcao">Alterar telefone</p>
+    <p class="opcao">Alterar salario base</p>
     <button id="sair">Sair</button>
+  </div>
+
+  <div id="funcionalidades">
+  <div id="saldo">Saldo</div>
+  <div id="deposito">Deposito</div>
+  <div id="saque">Saque</div>
+  <div id="transferencia">Transferências</div>
+  <div id="pagamento">Pagamentos</div>
+  <div id="emprestimo">Empréstimo</div>
+  <div id="extrato">Extrato</div>
+  </div>
+
+
   </div>
 
   <div id="load"></div>
@@ -43,13 +56,77 @@
       setTimeout(function () {
         load.style.display = "none"
 
-        window.location.href = "http://localhost:8080/perfil"
+        window.location.href = "http://localhost:8080/perfil/exibir"
       }, 1000)
 
     })
 
-
     opcoes[1].addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/perfil/senha"
+      }, 1000)
+
+    })
+
+    opcoes[2].addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/perfil/endereco"
+      }, 1000)
+
+    })
+
+    opcoes[3].addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/perfil/email"
+      }, 1000)
+
+    })
+
+    opcoes[4].addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/perfil/telefone"
+      }, 1000)
+
+    })
+
+    opcoes[5].addEventListener("click", function () {
+      let load = document.getElementById("load")
+
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080/perfil/salario"
+      }, 1000)
+
+    })
+
+document.getElementById("saldo").addEventListener("click", function () {
       let load = document.getElementById("load")
 
       load.style.display = "block"
@@ -62,8 +139,8 @@
       }, 1000)
     })
 
-
-    opcoes[2].addEventListener("click", function () {
+   
+    document.getElementById("deposito").addEventListener("click", function () {
       let load = document.getElementById("load")
 
       load.style.display = "block"
@@ -75,9 +152,9 @@
         window.location.href = "http://localhost:8080/deposito"
       }, 1000)
     })
+ 
 
-
-    opcoes[3].addEventListener("click", function () {
+    document.getElementById("saque").addEventListener("click", function () {
       let load = document.getElementById("load")
 
       load.style.display = "block"
@@ -89,9 +166,8 @@
         window.location.href = "http://localhost:8080/saque"
       }, 1000)
     })
-
-
-    opcoes[4].addEventListener("click", function () {
+    
+    document.getElementById("transferencia").addEventListener("click", function () {
       let load = document.getElementById("load")
 
       load.style.display = "block"
@@ -103,7 +179,7 @@
       }, 1000)
     })
 
-    opcoes[5].addEventListener("click", function () {
+    document.getElementById("pagamento").addEventListener("click", function () {
       let load = document.getElementById("load")
 
       load.style.display = "block"
@@ -114,8 +190,8 @@
         window.location.href = "http://localhost:8080/pagamentos/boleto"
       }, 1000)
     })
-
-    opcoes[6].addEventListener("click", function () {
+  
+    document.getElementById("emprestimo").addEventListener("click", function () {
       let load = document.getElementById("load")
 
       load.style.display = "block"
@@ -126,8 +202,8 @@
         window.location.href = "http://localhost:8080/emprestimo"
       }, 1000)
     })
-
-    opcoes[7].addEventListener("click", function () {
+   
+    document.getElementById("extrato").addEventListener("click", function () {
       let load = document.getElementById("load")
       load.style.display = "block"
 
@@ -144,8 +220,8 @@
           })
       }, 1000)
     })
-
-    opcoes[8].addEventListener("click", function () {
+    
+    document.getElementById("headerSuporte").addEventListener("click", function () {
       let load = document.getElementById("load")
 
       load.style.display = "block"
@@ -156,6 +232,7 @@
         window.location.href = "http://localhost:8080/suporte"
       }, 1000)
     })
+   
 
     document.getElementById("sair").addEventListener("click", function () {
       let load = document.getElementById("load")
@@ -168,6 +245,9 @@
         window.location.href = "http://localhost:8080"
       }, 2500)
     })
+
+
+
 
   </script>
 </body>

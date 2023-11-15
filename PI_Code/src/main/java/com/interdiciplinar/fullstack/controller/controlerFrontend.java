@@ -22,21 +22,9 @@ public String menu(){
     return "menu";
 }
 
-@GetMapping("/perfil")
-public String perfil(){
-    return "perfilMenu";
-}
-
-
 @GetMapping("/perfil/exibir")
 public String perfilExibir(){
     return "perfilExibir";
-}
-
-
-@GetMapping("/perfil/alterar")
-public String perfilAlterar(){
-    return "perfilAlterar";
 }
 
 @GetMapping("/perfil/senha")
