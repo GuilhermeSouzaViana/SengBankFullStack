@@ -70,6 +70,56 @@
             background-color: rgba(255, 255, 255, 0.7);
             display: none;
         }
+
+
+        @media screen and (min-width:250px) and (max-width:349px) {
+
+            ul p {
+                font-size: 14px;
+            }
+
+            #voltar {
+                font-size: 12px;
+            }
+
+
+            #sald {
+                width: 80%;
+            }
+
+
+            body{background-image: none;}
+        }
+
+
+        @media screen and (min-width:350px) and (max-width:604px) {
+
+            ul p {
+                font-size: 16px;
+            }
+
+            #voltar {
+                font-size: 14px;
+            }
+
+
+            #sald {
+                width: 50%;
+            }
+        }
+
+
+        @media screen and (min-width:605px) and (max-width:840px) {
+
+            ul p {
+                font-size: 20px;
+            }
+
+            #voltar {
+                font-size: 16px;
+            }
+
+        }
     </style>
     <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
 
@@ -94,7 +144,7 @@
                         currency: 'BRL',
                     });
                     const contaSaldo = usuario.codigo
-       let listItem = document.createElement("li");
+                    let listItem = document.createElement("li");
                     listItem.innerHTML = `
                 <p>Conta ${contaSaldo}</br>${saldo}</p>`;
                     dadosUsuario.appendChild(listItem);
@@ -102,8 +152,8 @@
             })
             .catch(error => {
                 console.error('Erro ao buscar saldo usuario:', error);
-            });    
-            document.getElementById("voltar").addEventListener("click", function () {
+            });
+        document.getElementById("voltar").addEventListener("click", function () {
             let load = document.getElementById("load")
             load.style.display = "block"
             setTimeout(function () {
@@ -112,6 +162,7 @@
                 window.location.href = "http://localhost:8080/menu"
             }, 1000)
         })
- </script>
+    </script>
 </body>
+
 </html>

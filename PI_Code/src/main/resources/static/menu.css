@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color: gray;
+    background-color: white;
    /*background-image: url(./img/backMenu.jpg);
     background-repeat: no-repeat;
     background-position: center center;*/ 
@@ -15,10 +15,9 @@ header{
     height: 80px;
 }
 
-#headerLogo,#headerSuporte{
+#headerLogo{
     width: 15%;
     height: 100%;
-    border: 1px solid black;
   }
 
 #headerLogo{float: left;width: 15%;}
@@ -30,8 +29,8 @@ header #headerLogo img{
 }
 
 header #headerSuporte img{
-    height:80px ;
-    width:80px;
+    height:100% ;
+    width:100%;
     transition: 0.2s;
  }
 
@@ -41,37 +40,65 @@ header #headerSuporte img{
  }
 
 #mn{
-    width: 98%;
-    background-color: red;
-    border: solid 1px black;
-    padding: 10px;
+    width: 99%;
     display: flex;
-    
 }
 
 
-#mn div{
-    margin: 5px;
-}
 #opPerfil{
-    width: 40%;
+    width: 35%;
     text-align: center;
-    background-color: rgba(124, 114, 134, 0.7);
-    border-radius: 15px;
+    background-color: white;
 }
 
 
 #funcionalidades{
-   display: flex;
-   flex-wrap: wrap;
+    background-color: rgb(91, 91, 255);
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     border: 1px solid black;
 }
 
+
 #funcionalidades div{
-    height: 200px;
-    width:200px ;
+    padding: 15px;
+    text-align: center;
+    height: 180px;
+    width:180px ;
+    margin-top: 5px;
+    margin-left: 25px;
+    margin-bottom: 15px;
     border: solid black 1px;
+    background-color: white;
+    border-radius: 5%;
+    transition: 0.1s;
 }
+
+#funcionalidades div:hover{
+    width: 177px;
+    height: 177px;
+}
+
+figcaption{
+    text-align: center;
+    font-size: 28px;
+}
+
+figure {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    width: 80%;
+    height: 75%;
+}
+
+figure img{
+    width: 100%;
+    height: 100%;
+}
+
 
 p{
     margin: 10px;
@@ -83,15 +110,15 @@ p{
     
 }
 
-p:hover{color:white;}
+p:hover{color:rgb(91, 91, 255);}
 
 #sair{
     border-radius: 10px;
-    font-size: px;
+    font-size: 20px;
     padding: 4px;
     width: 80px;
-    margin-top: 5px;
-    background-color: rgb(91, 91, 248);
+    margin-top: 25%;
+    background-color:rgb(91, 91, 255);;
     border-style: none;
 }
 
@@ -109,4 +136,176 @@ p:hover{color:white;}
     background-position: center center;
     background-color: rgba(255, 255, 255, 0.7);
     display: none;
+}
+
+
+@media screen and (min-width:250px) and (max-width:449px) {
+
+
+    #headerSuporte{width:40px;}
+
+    #funcionalidades{
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+      width: 95%;
+     justify-content: space-around;
+    }
+    
+    
+    #mn{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    
+    #funcionalidades div{
+        height: 50px;
+        width:50px ;
+    }
+    
+    #funcionalidades div:hover{
+        width: 50px;
+        height: 45px;
+    }
+    
+    figcaption{
+        text-align: center;
+        font-size: 10px;
+    }
+    
+    h1{font-size: 16px;}
+    
+    p,#sair{
+        font-size: 14px;
+    }
+    
+    #opPerfil{
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+    }
+
+#sair{margin-top: 10px;}
+
+}
+
+
+
+
+
+@media screen and (min-width:450px) and (max-width:604px) {
+
+    #headerSuporte{width: 60px;}
+
+
+    #funcionalidades{
+        justify-content: space-around;
+    }
+    
+    
+    #mn{
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+    
+    #funcionalidades div{
+        height: 65px;
+        width:65px ;
+    }
+    
+    #funcionalidades div:hover{
+        width: 62px;
+        height: 62px;
+    }
+    
+    figcaption{
+        text-align: center;
+        font-size: 12px;
+    }
+    
+    h1{font-size: 16px;}
+    
+    p,#sair{
+        font-size: 12px;
+    }
+    
+    #opPerfil{
+        width: 100%;
+    }
+
+
+}
+
+@media screen and (min-width:605px) and (max-width:840px) {
+
+#funcionalidades{
+    justify-content: space-around;
+}
+
+
+#mn{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+#funcionalidades div{
+    height: 90px;
+    width:90px ;
+}
+
+#funcionalidades div:hover{
+    width: 87px;
+    height: 87px;
+}
+
+figcaption{
+    text-align: center;
+    font-size: 16px;
+}
+
+h1{font-size: 18px;}
+
+p,#sair{
+    font-size: 15px;
+}
+
+#opPerfil{
+    width: 80%;
+}
+
+
+}
+
+
+@media screen and (min-width:841px) and (max-width:990px) {
+ 
+    #funcionalidades div{
+        height: 100px;
+        width:100px ;
+    }
+    
+    #funcionalidades div:hover{
+        width: 107px;
+        height: 107px;
+    }
+    
+    figcaption{
+        text-align: center;
+        font-size: 18px;
+    }
+    
+    h1{font-size: 20px;}
+   
+    p,#sair{
+        font-size: 16px;
+    }
+
+    #opPerfil{
+        width: 40%;
+    }
+
 }
