@@ -32,7 +32,7 @@ header #headerSuporte img{
     transition: 0.2s;
  }
 
- header #headerSuporte img:hover{
+#headerSuporte img:hover{
     height:75px ;
     width:75px;
  }
@@ -140,6 +140,11 @@ p:hover{color:rgb(91, 91, 255);}
 
 @media screen and (min-width:250px) and (max-width:449px) {
 
+    #headerSuporte img:hover{
+        height:35px ;
+        width:35px;
+     }
+
 
     #headerSuporte{width:40px;}
 
@@ -195,6 +200,11 @@ p:hover{color:rgb(91, 91, 255);}
 
 
 @media screen and (min-width:450px) and (max-width:604px) {
+
+    #headerSuporte img:hover{
+        height:55px ;
+        width:55px;
+     }
 
     #headerSuporte{width: 60px;}
 

@@ -1,0 +1,151 @@
+body {
+    background-color: white;
+    background-image: url(../img/backSuporte.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+#pgt {
+    margin-top: 0.5%;
+    border-radius: 10px;
+    text-align: center;
+    width: 85%;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid black 1px;
+    background-color: rgb(210, 162, 255, 0.8);
+}
+
+
+p {
+    cursor: pointer;
+    border: solid black 1px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    font-size: 25px;
+    padding: 3px;
+    background-color: rgb(243, 227, 134);
+}
+
+p:hover {
+    background-color: rgb(248, 234, 169);
+}
+
+.perguntas {
+    border: solid black 1px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -25px;
+    width: 80%;
+    font-size: 25px;
+    padding: 3px;
+    background-color: white;
+}
+
+#voltar {
+    margin-top: 15px;
+    border-style: none;
+    border-radius: 10px;
+    padding: 7px;
+    font-size: 22px;
+    background-color: rgb(98, 98, 253);
+}
+
+#voltar:hover {
+    background-color: rgb(61, 61, 253);
+}
+
+#load {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/carregamento.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: none;
+}
+
+
+
+@media screen and (min-width:250px) and (max-width:349px) {
+
+    .perguntas{font-size: 12px; width: 99%;}
+
+    #pgt{width: 95%;}
+
+    body {
+        background-image: none;
+    }
+
+    h1 {
+        font-size: 16px;
+    }
+
+    h2,h3{
+        font-size: 14px;
+    }
+
+    p {
+        width: 99%;
+        height: 22px;
+        font-size: 12px;
+    }
+
+    #voltar {
+        font-size: 12px;
+    }
+
+}
+
+@media screen and (min-width:350px) and (max-width:604px) {
+
+    .perguntas{font-size: 16px;width: 98%;}
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h2,h3{
+        font-size: 18px;
+    }
+
+    p {
+        width: 98%;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    #voltar {
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (min-width:605px) and (max-width:840px) {
+
+    .perguntas{font-size: 20px;}
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h2{
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 25px;
+    }
+
+    #voltar {
+        font-size: 16px;
+    }
+
+}
