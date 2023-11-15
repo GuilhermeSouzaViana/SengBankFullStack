@@ -18,7 +18,7 @@
         #deposit {
             border-radius: 10px;
             text-align: center;
-            width: 30%;
+            width: 40%;
             padding: 5px;
             margin-left: auto;
             margin-right: auto;
@@ -104,11 +104,114 @@
         #cs:hover {
             background-color: rgb(133, 130, 130);
         }
+
+
+
+        @media screen and (min-width:250px) and (max-width:349px) {
+
+            body {
+                background-image: none;
+            }
+
+            #deposit {
+                width: 80%;
+            }
+
+            h1 {
+                font-size: 18px;
+            }
+
+            input {
+                width: 145px;
+                font-size: 12px;
+            }
+
+            #voltar,
+            #dep {
+                font-size: 12px;
+            }
+
+            #cs {
+                font-size: 16px;
+            }
+
+
+            #confirmSenha input {
+                height: 50px;
+                width: 230px;
+                font-size: 14px;
+            }
+
+        }
+
+        @media screen and (min-width:350px) and (max-width:604px) {
+
+            #deposit {
+                width: 50%;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            input {
+                width: 145px;
+                font-size: 13px;
+            }
+
+            #voltar,
+            #dep {
+                font-size: 14px;
+            }
+
+            #cs {
+                font-size: 18px;
+            }
+
+
+            #confirmSenha input {
+                height: 50px;
+                width: 230px;
+                font-size: 16px;
+            }
+
+        }
+
+        @media screen and (min-width:605px) and (max-width:840px) {
+
+
+
+            h1 {
+                font-size: 25px;
+            }
+
+            input {
+                font-size: 16px;
+            }
+
+            #voltar,
+            #dep {
+                font-size: 16px;
+            }
+
+            #cs {
+                font-size: 22px;
+            }
+
+
+            #confirmSenha input {
+                height: 60px;
+                width: 250px;
+                font-size: 20px;
+            }
+
+        }
     </style>
 
     <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
 
 </head>
+
 <body>
     <div id="deposit">
         <h1>Valor de deposito</h1>
@@ -177,7 +280,7 @@
                                 conta: agencia,
                                 deposito: dep
                             }
-                           fetch(`http://localhost:8080/deposito/cadastrar?codigoSaldo=${conta}
+                            fetch(`http://localhost:8080/deposito/cadastrar?codigoSaldo=${conta}
                             &codigoConta=${conta}&agenciaConta=${agencia}`, {
                                 method: "POST",
                                 headers: {
@@ -251,4 +354,5 @@
 
     </script>
 </body>
+
 </html>
