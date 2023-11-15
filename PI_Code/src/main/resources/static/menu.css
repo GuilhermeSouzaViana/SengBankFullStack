@@ -5,14 +5,12 @@
 
 body{
     background-color: white;
-   /*background-image: url(./img/backMenu.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;*/ 
 }
 
 header{
     background-color: white;
     height: 80px;
+    margin-top: 5px;
 }
 
 #headerLogo{
@@ -21,7 +19,7 @@ header{
   }
 
 #headerLogo{float: left;width: 15%;}
-#headerSuporte{float: right;width:80px;}
+#headerSuporte{float: right;width:80px;margin-right:50px;}
 
 header #headerLogo img{
    height:100px ;
@@ -40,6 +38,7 @@ header #headerSuporte img{
  }
 
 #mn{
+    margin-top: 10px;
     width: 99%;
     display: flex;
 }
