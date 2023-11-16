@@ -103,16 +103,16 @@ input {
 #login {
     width: 50%;
     background-color: rgb(207, 180, 233, 0.9);
-    border-bottom-left-radius: 15px;
-    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
     padding: 5px;
 }
 
 #cadastro {
     width: 50%;
     background-color: rgb(245, 242, 242, 0.9);
-    border-bottom-right-radius: 15px;
-    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
 }
 
 #login h1,

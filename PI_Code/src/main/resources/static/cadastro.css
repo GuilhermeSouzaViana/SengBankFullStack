@@ -1,24 +1,24 @@
-body{
+body {
     background-color: white;
     background-image: url(./img/backCadastro.png);
     background-repeat: no-repeat;
-    background-position: center center;    
+    background-position: center center;
 }
 
-form{
+form {
     text-align: center;
-    width: 30%;
+    width: 400px;
     border-radius: 15px;
     margin-left: auto;
     margin-right: auto;
     padding: 5px;
-    border: solid black  1px;
+    border: solid black 1px;
     margin-top: 3%;
-    background-color: rgb(242, 169, 245,0.7);
+    background-color: rgb(242, 169, 245, 0.7);
 }
 
 
-input{
+input {
     width: 80%;
     border-style: none;
     border-radius: 20px;
@@ -30,19 +30,28 @@ input{
 }
 
 
-#cadBtn{
+#cadBtn,
+#voltar {
     margin-top: 20px;
-    padding:3px;
+    padding: 3px;
     border-radius: 10px;
     background-color: rgb(131, 131, 241);
-    height:40px;
+    height: 40px;
     width: 100px;
     font-size: 20px;
     border-style: none;
 }
 
-#cadBtn:hover{
+#cadBtn:hover {
     background-color: rgb(105, 105, 240);
+}
+
+#voltar:hover {
+    background-color: rgb(105, 105, 240);
+}
+
+#voltar {
+    margin-top: 10px;
 }
 
 #load {
@@ -57,4 +66,53 @@ input{
     background-position: center center;
     background-color: rgba(255, 255, 255, 0.7);
     display: none;
+}
+
+
+@media screen and (min-width:250px) and (max-width:339px) {
+
+    h1 {
+        font-size: 16px;
+    }
+
+
+    form {
+        width: 220px;
+    }
+
+    input {
+        font-size: 14px;
+    }
+
+    #cadBtn,
+    #voltar {
+        height: 30px;
+        width: 70px;
+        font-size: 13px;
+    }
+
+}
+
+@media screen and (min-width:340px) and (max-width:450px) {
+
+    h1 {
+        font-size: 20px;
+    }
+
+
+    form {
+        width: 300px;
+    }
+
+    input {
+        font-size: 16px;
+    }
+
+    #cadBtn,
+    #voltar {
+        height: 35px;
+        width: 80px;
+        font-size: 15px;
+    }
+
 }
