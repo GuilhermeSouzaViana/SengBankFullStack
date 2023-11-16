@@ -4,77 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            background-color: white;
-            background-image: url(../img/backPerfil.jpg);
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-        }
-
-        #perfilEx {
-            border-radius: 10px;
-            text-align: center;
-            width: 30%;
-            padding: 2px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 1%;
-            border: solid black 1px;
-            background-color: rgb(210, 162, 255, 0.7);
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        section p {
-            margin: 5px;
-            margin-left: auto;
-            margin-right: auto;
-            background-color: rgb(252, 234, 136);
-            padding: 3px;
-            font-size: 20px;
-            border-radius: 10px;
-        }
-
-        section {
-            border-radius: 10px;
-            text-align: center;
-            padding: 2px;
-            margin-left: -40px;
-            margin-bottom: 40px;
-            margin-top: -20px;
-        }
-
-
-        #voltar {
-            border-style: none;
-            border-radius: 10px;
-            padding: 7px;
-            font-size: 22px;
-            background-color: rgb(98, 98, 253);
-        }
-
-        #voltar:hover {
-            background-color: rgb(61, 61, 253);
-        }
-
-        #load {
-            z-index: 2;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url(../img/carregamento.gif);
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-color: rgba(255, 255, 255, 0.7);
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="/perfilDados.css">
     <title>Perfil</title>
     <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
 
@@ -140,7 +70,7 @@
             setTimeout(function () {
                 load.style.display = "none"
 
-               window.location.href = "http://localhost:8080/menu"
+                window.location.href = "http://localhost:8080/menu"
             }, 1000)
         })
     </script>
