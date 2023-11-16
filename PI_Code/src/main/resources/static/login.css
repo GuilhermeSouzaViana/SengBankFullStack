@@ -135,7 +135,9 @@ input {
 }
 
 
-@media screen and (min-width:250px) and (max-width:350px) {
+@media screen and (min-width:250px) and (max-width:450px) {
+
+    #sair{display: none;}
 
     #cadResponsivo {
         font-size: 14px;
@@ -188,7 +190,7 @@ input {
     }
 }
 
-@media screen and (min-width:351px) and (max-width:600px) {
+@media screen and (min-width:451px) and (max-width:600px) {
 
     #cadResponsivo {
         display: block;

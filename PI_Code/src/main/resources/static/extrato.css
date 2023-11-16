@@ -9,7 +9,7 @@ body {
 #extrat {
     border-radius: 10px;
     text-align: center;
-    width: 90%;
+    width: 600px;
     padding: 5px;
     margin-left: auto;
     margin-right: auto;
@@ -68,33 +68,30 @@ section {
 }
 
 
-@media screen and (min-width:250px) and (max-width:329px) {
+@media screen and (min-width:250px) and (max-width:305px) {
 
     body{background-image: none;}
 
-    #extrat{width: 99%;}
+    #extrat{width: 215px;}
 
-    h1 {
-        font-size: 16px;
-    }
 
     section p {
-        font-size: 10px;
+        font-size: 8.5px;
     }
 
     #voltar {
-        font-size: 11px;
+        font-size: 12px;
     }
 
 }
 
-@media screen and (min-width:330px) and (max-width:389px) {
+
+@media screen and (min-width:306px) and (max-width:389px) {
 
     body{background-image: none;}
 
-    h1 {
-        font-size: 18px;
-    }
+    #extrat{width: 280px;}
+
 
     section p {
         font-size: 11px;
@@ -106,14 +103,12 @@ section {
 
 }
 
-@media screen and (min-width:390px) and (max-width:604px) {
+@media screen and (min-width:390px) and (max-width:650px) {
 
-    h1 {
-        font-size: 20px;
-    }
+#extrat{width: 360px;}
 
     section p {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     #voltar {
@@ -122,18 +117,3 @@ section {
 
 }
 
-@media screen and (min-width:605px) and (max-width:840px) {
-
-    h1 {
-        font-size: 25px;
-    }
-
-    section p {
-        font-size: 16px;
-    }
-
-    #voltar {
-        font-size: 16px;
-    }
-
-}

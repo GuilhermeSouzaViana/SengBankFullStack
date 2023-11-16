@@ -121,7 +121,19 @@ p:hover{color:rgb(91, 91, 255);}
     border-style: none;
 }
 
-#sair:hover{ background-color: rgb(46, 46, 248);}
+#sairResponsive{
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 4px;
+    margin-top: 1%;
+    background-color:rgb(91, 91, 255);;
+    width:60px;
+    border-style: none;
+    margin-left:42%;
+    display: none;
+}
+
+#sair,#sairResponsive:hover{ background-color: rgb(46, 46, 248);}
 
 #load {
     z-index: 2;
@@ -140,11 +152,15 @@ p:hover{color:rgb(91, 91, 255);}
 
 @media screen and (min-width:250px) and (max-width:449px) {
 
+    #sair{display: none;}
+
+
+    #sairResponsive{display: block;}
+
     #headerSuporte img:hover{
         height:35px ;
         width:35px;
      }
-
 
     #headerSuporte{width:40px;}
 
@@ -181,7 +197,7 @@ p:hover{color:rgb(91, 91, 255);}
     
     h1{font-size: 16px;}
     
-    p,#sair{
+    p{
         font-size: 14px;
     }
     
@@ -191,7 +207,6 @@ p:hover{color:rgb(91, 91, 255);}
         width: 60%;
     }
 
-#sair{margin-top: 10px;}
 
 }
 

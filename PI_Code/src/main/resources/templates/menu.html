@@ -82,9 +82,8 @@
 
     </div>
 
-
   </div>
-
+  <button id="sairResponsive">Sair</button>
   <div id="load"></div>
   <script>
 
@@ -288,7 +287,17 @@
       }, 2500)
     })
 
+    document.getElementById("sairResponsive").addEventListener("click", function () {
+      let load = document.getElementById("load")
 
+      load.style.display = "block"
+
+      setTimeout(function () {
+        load.style.display = "none"
+
+        window.location.href = "http://localhost:8080"
+      }, 2500)
+    })
 
 
   </script>
