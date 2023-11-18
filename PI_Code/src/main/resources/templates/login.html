@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
     <title>Login</title>
@@ -51,77 +51,7 @@
 
 
     <div id="load"></div>
-    <script>
-
-        function LoginSengBank() {
-            event.preventDefault()
-
-            let load = document.getElementById("load")
-
-            load.style.display = "block"
-
-            setTimeout(function () {
-
-                let cpf = document.getElementById("cpf").value
-                let senha = document.getElementById("senha").value
-
-                let obj = {
-                    cpf: cpf,
-                    senha: senha
-                };
-
-                fetch(`http://localhost:8080/login?cpf=${cpf}&senha=${senha}`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(obj)
-                })
-                    .then(response => {
-                        if (response.status == 200) {
-                            load.style.display = "none"
-                            document.getElementById("formLogin").reset();
-                            window.location.href = "http://localhost:8080/menu"
-                        } else {
-                            load.style.display = "none"
-
-                            setTimeout(function () {
-                                alert("Conta inexistente")
-                                document.getElementById("formLogin").reset();
-
-                            }, 100)
-                        }
-
-                    })
-            }, 1500)
-        }
-
-        document.getElementById("formLogin").addEventListener("submit", LoginSengBank)
-
-        document.getElementById("cadBtn").addEventListener("click", function () {
-            let load = document.getElementById("load")
-
-            load.style.display = "block"
-
-            setTimeout(function () {
-                load.style.display = "none"
-
-                window.location.href = "http://localhost:8080/cadastro"
-            }, 1500)
-        })
-
-        document.getElementById("cadResponsivo").addEventListener("click", function () {
-            let load = document.getElementById("load")
-
-            load.style.display = "block"
-
-            setTimeout(function () {
-                load.style.display = "none"
-
-                window.location.href = "http://localhost:8080/cadastro"
-            }, 1500)
-        })
-    </script>
+    <script src="../javascript/login.js"></script>
 
 </body>
 

@@ -68,7 +68,10 @@ section {
 
 @media screen and (min-width:250px) and (max-width:349px) {
 
-    #comprovante{width: 70%;}
+    #comprovante {
+        margin-top: 30%;
+        width: 70%;
+    }
 
     h1 {
         font-size: 16px;
@@ -83,12 +86,19 @@ section {
     }
 
 
-    body{background-image: none;}
+    body {
+        background-image: none;
+    }
 }
 
 @media screen and (min-width:350px) and (max-width:604px) {
 
-    #comprovante{width: 65%;}
+
+
+    #comprovante {
+        margin-top: 25%;
+        width: 65%;
+    }
 
     h1 {
         font-size: 20px;

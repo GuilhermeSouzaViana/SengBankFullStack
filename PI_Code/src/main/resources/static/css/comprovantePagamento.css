@@ -6,7 +6,7 @@ body {
 #comprovante {
     border-radius: 10px;
     text-align: center;
-    width: 95%;
+    width: 780px;
     padding: 5px;
     margin-left: auto;
     margin-right: auto;
@@ -69,7 +69,10 @@ section {
 
 @media screen and (min-width:250px) and (max-width:349px) {
 
-    #comprovante{width: 99%;}
+    #comprovante{ 
+        margin-top:30%;
+        width: 230px;
+    }
 
     h1 {
         font-size: 16px;
@@ -89,7 +92,10 @@ section {
 
 @media screen and (min-width:350px) and (max-width:604px) {
 
-    #comprovante{width: 98%;}
+    #comprovante{ 
+         margin-top:25%;
+        width: 330px;
+    }
 
     h1 {
         font-size: 20px;
@@ -100,23 +106,28 @@ section {
     }
 
     #voltar {
-        font-size: 14px;
+        font-size: 16px;
     }
 
 }
 
 @media screen and (min-width:605px) and (max-width:840px) {
 
+    #comprovante{
+        margin-top: 20%;
+        width: 500px;
+    }
+
     h1 {
         font-size: 25px;
     }
 
     section p {
-        font-size: 16px;
+        font-size: 19px;
     }
 
     #voltar {
-        font-size: 16px;
+        font-size: 18px;
     }
 
 }
