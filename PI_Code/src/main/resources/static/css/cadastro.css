@@ -30,8 +30,7 @@ input {
 }
 
 
-#cadBtn,
-#voltar {
+#cadBtn{
     margin-top: 20px;
     padding: 3px;
     border-radius: 10px;
@@ -42,12 +41,19 @@ input {
     border-style: none;
 }
 
+#voltar{
+    margin-top: 20px;
+    padding: 3px;
+    width: 100%;
+    font-size: 20px;
+    border-style: none;
+}
 #cadBtn:hover {
     background-color: rgb(105, 105, 240);
 }
 
 #voltar:hover {
-    background-color: rgb(105, 105, 240);
+   color: rgb(105, 105, 240);
 }
 
 #voltar {
@@ -84,11 +90,14 @@ input {
         font-size: 14px;
     }
 
-    #cadBtn,
-    #voltar {
+    #cadBtn{
         height: 30px;
         width: 70px;
         font-size: 13px;
+    }
+
+    #voltar{
+        font-size: 15px;
     }
 
 }
@@ -108,11 +117,13 @@ input {
         font-size: 16px;
     }
 
-    #cadBtn,
-    #voltar {
+    #cadBtn{
         height: 35px;
         width: 80px;
         font-size: 15px;
     }
 
+    #voltar{
+        font-size: 15px;
+    }
 }
